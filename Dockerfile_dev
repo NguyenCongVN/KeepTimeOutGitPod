@@ -1,7 +1,13 @@
 FROM gitpod/workspace-full-vnc
 
+#
+USER root
+
 # Upgrade installed packages
 RUN apt update -y
 
 # Install dev tools
 RUN apt install -y scrot python3-tk python3-dev
+
+# 
+USER gitpod
