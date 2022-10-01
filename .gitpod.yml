@@ -1,2 +1,15 @@
 image:
   file: Dockerfile_dev
+tasks:
+  - name: install
+    before: |
+      curl -sSL https://install.python-poetry.org | python3 -
+      export PATH="/home/gitpod/.local/bin:$PATH"
+      poetry completions bash >> ~/.bash_completion
+    init: |
+      curl -sSL https://install.python-poetry.org | python3 -
+      export PATH="/home/gitpod/.local/bin:$PATH"
+      poetry completions bash >> ~/.bash_completion
+      poetry config virtualenvs.create true
+      poetry config virtualenvs.in-project true
+      poetry install
